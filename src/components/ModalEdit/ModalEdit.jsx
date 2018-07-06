@@ -18,10 +18,13 @@ export class ModalEdit extends React.Component {
 
   onChange = e => this.setState({comment: e.target.value})
 
-  onSave = () => this.props.saveHandler(this.props.id, this.state.comment)
+  onSave = () => {
+    if(this.state.comment.length)
+      this.props.saveHandler(this.props.id, this.state.comment)
+  }
 
   render() {
-    const {opened, closeHandler, status} = this.props
+    const {opened, closeHandler, status, comment} = this.props
 
     return <Modal size={'tiny'} open={opened} onClose={closeHandler}>
       <Modal.Header>Edit comment</Modal.Header>
@@ -39,7 +42,7 @@ export class ModalEdit extends React.Component {
       </Modal.Content>
       <Modal.Actions>
         <Button color='red' onClick={closeHandler}>Cancel</Button>
-        <Button color='green' onClick={this.onSave}>
+        <Button color='green' disabled={this.state.comment === comment || this.state.comment.length === 0} onClick={this.onSave}>
           <Icon name='checkmark'/> Yes
         </Button>
       </Modal.Actions>
