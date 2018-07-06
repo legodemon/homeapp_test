@@ -1,6 +1,6 @@
 import * as ActionsConst from '../const/const'
 
-const initialState = {loading: true}
+const initialState = {loading: true, currentEdit: null}
 
 export default function state(state = initialState, {type, payload}) {
   switch (type) {
@@ -13,6 +13,12 @@ export default function state(state = initialState, {type, payload}) {
 
     case ActionsConst.GET_DATA_ERROR:
       return {error: payload}
+
+    case ActionsConst.OPEN_MODAL:
+      return {...state, currentEdit: payload}
+
+    case ActionsConst.CLOSE_MODAL:
+      return {...state, currentEdit: null}
 
     default:
       return state

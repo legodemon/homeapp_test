@@ -14,3 +14,7 @@ export const getData = () => dispatch => {
       payload: error
     }))
 }
+
+export const openModal = id => dispatch => dispatch({type: ActionsConst.OPEN_MODAL, payload: id})
+
+export const closeModal = () => dispatch => dispatch({type: ActionsConst.CLOSE_MODAL})
