@@ -24,7 +24,7 @@ class App extends React.Component {
   closeModal = () => this.props.actions.closeModal()
 
   render() {
-    const {actions: {openModal}, store: {loading, currentEdit, data}} = this.props
+    const {actions: {openModal, saveComment}, store: {loading, currentEdit, saveCommentStatus, data}} = this.props
     return !loading ? [
       <Card.Group items={data.map(({id, name, email, body}) => ({
         header: name,
@@ -32,11 +32,17 @@ class App extends React.Component {
         meta: email,
         onClick: () => openModal(id)
       }))} key={'cards-group'}/>,
-      currentEdit ? <ModalEdit key={'modal-edit'}
-                 closeHandler={this.closeModal}
-                 id={currentEdit}
-                 comment={data.filter(({id}) => id === currentEdit)[0].body}
-                 opened={!!currentEdit}/> : null
+      currentEdit
+        ? <ModalEdit
+          key={'modal-edit'}
+          status={saveCommentStatus}
+          closeHandler={this.closeModal}
+          saveHandler={saveComment}
+          id={currentEdit}
+          comment={data.find(({id}) => id === currentEdit).body}
+          opened={!!currentEdit}
+        />
+        : null
     ] : <Loader active inline='centered'/>
   }
 }

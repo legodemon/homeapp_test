@@ -18,3 +18,9 @@ export const getData = () => dispatch => {
 export const openModal = id => dispatch => dispatch({type: ActionsConst.OPEN_MODAL, payload: id})
 
 export const closeModal = () => dispatch => dispatch({type: ActionsConst.CLOSE_MODAL})
+
+export const saveComment = (id, comment) => dispatch => {
+  dispatch({type: ActionsConst.SAVE_COMMENT_REQUEST})
+
+  window.setTimeout(() => dispatch({type: ActionsConst.SAVE_COMMENT_SUCCESS, payload: {id: id, comment: comment}}), 300)
+}
