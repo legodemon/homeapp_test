@@ -3,7 +3,7 @@ import * as ActionsConst from '../const/const'
 export const getData = () => dispatch => {
   dispatch({type: ActionsConst.GET_DATA_REQUEST})
 
-  fetch('/public/data.json')
+  fetch('https://jsonplaceholder.typicode.com/comments')
     .then(response => response.json())
     .then(data => window.setTimeout(() => dispatch({
       type: ActionsConst.GET_DATA_SUCCESS,

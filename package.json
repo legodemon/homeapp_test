@@ -46,6 +46,8 @@
     "redux-thunk": "^2.3.0",
     "reselect": "3.0.1",
     "sanitize.css": "^5.0.0",
+    "semantic-ui-css": "^2.3.2",
+    "semantic-ui-react": "^0.82.0",
     "warning": "^4.0.1",
     "whatwg-fetch": "2.0.4"
   },

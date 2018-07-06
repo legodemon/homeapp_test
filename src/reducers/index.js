@@ -9,7 +9,7 @@ export default function state(state = initialState, {type, payload}) {
       return {...state, loading: true}
 
     case ActionsConst.GET_DATA_SUCCESS:
-      return {...state, loading: false, ...payload}
+      return {...state, loading: false, data: payload}
 
     case ActionsConst.GET_DATA_ERROR:
       return {error: payload}
