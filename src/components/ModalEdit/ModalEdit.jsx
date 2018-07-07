@@ -42,7 +42,7 @@ export class ModalEdit extends React.Component {
       </Modal.Content>
       <Modal.Actions>
         <Button color='red' onClick={closeHandler}>Cancel</Button>
-        <Button color='green' disabled={this.state.comment === comment || this.state.comment.length === 0} onClick={this.onSave}>
+        <Button color='green' disabled={this.state.comment.trim() === comment || this.state.comment.trim().length === 0} onClick={this.onSave}>
           <Icon name='checkmark'/> Yes
         </Button>
       </Modal.Actions>
